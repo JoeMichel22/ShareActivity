@@ -1,5 +1,6 @@
 package edu.temple.funwithintents
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageButton
@@ -12,10 +13,15 @@ class MainActivity : AppCompatActivity() {
 
         // This view contains the text to share
         val editText = findViewById<EditText>(R.id.editTextText)
+        val intentString= Intent()
+        intentString.action= Intent.ACTION_SEND
+        intentString.putExtra(Intent.EXTRA_TEXT, editText.toString())
+        intentString.type= "text/plain"
+
 
         // When the user clicks this button, share the text
         findViewById<ImageButton>(R.id.shareImageButton).setOnClickListener {
-
+            startActivity(intentString)
         }
     }
 }
